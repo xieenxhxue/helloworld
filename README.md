@@ -40,3 +40,6 @@ gcc -C main.s -o main.o
 ## 链接 
 gcc -o main.o main.out
 
+
+
+#拆分main.c hello.c world.c
