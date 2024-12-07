@@ -1,5 +1,5 @@
 #include "world.h"
 
-int hello(){
+int world(){
     printf(" world!\n");
 }

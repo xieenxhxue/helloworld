@@ -1,5 +1,6 @@
 # helloworld
 https://space.bilibili.com/405472553/channel/collectiondetail?sid=1601540
+
 ## 初始化项目
 git 初始化项目
 
@@ -41,5 +42,55 @@ gcc -C main.s -o main.o
 gcc -o main.o main.out
 
 
+# 文件只有一个main.c
+target:prerequiries
+    command
+    
+``` makefile
+main:main.c
+	g++ -o $@ $^ # g++ -o main main.c
+
+clean:
+	rm -f main
+```
+
 
 #拆分main.c hello.c world.c
+
+# 拆分main.c 所有文件都在一个目录中
+main.c
+hello.c
+hello.h
+world.c
+world.h
+
+``` makefile
+
+main:main.o hello.o world.o
+	g++ -o main main.o hello.o world.o
+hello.o:hello.c hello.h
+    g++ -C hello.h
+world.o:world.c world.h
+    g++ -C world.h
+clean:
+    rm *.o
+	rm -f main
+```
+
+# 将功能模块分类
+main.c
+hello/hello.h
+hello/hello.c
+world/world.h
+world/world.c
+
+``` makefile
+
+main:main.o
+	g++ -o $@ $^
+hello.o
+
+clean:
+	rm -f main
+
+```
